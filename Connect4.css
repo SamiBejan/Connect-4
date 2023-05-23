@@ -1,0 +1,21 @@
+h1 {
+    text-align: center;
+}
+
+div.container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+td {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    border: solid;
+    border-width: 2px;
+    border-color: black;
+    background-color:aqua;
+}
