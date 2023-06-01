@@ -1,10 +1,15 @@
+body {
+    width: 100%;
+    max-width: fit-content;
+    margin: 2em auto;
+}
+
 h1 {
     text-align: center;
 }
 
 div.container {
     position: relative;
-    display: flex;
     align-items: center;
     justify-content: center;
     
@@ -18,4 +23,12 @@ td {
     border-width: 2px;
     border-color: black;
     background-color:aqua;
+}
+
+#red {
+    background-color: red;
+}
+
+#yellow {
+    background-color: yellow;
 }
