@@ -18,8 +18,87 @@ h1 {
 }
 
 .grid {
+    position: relative;
     grid-column: 2;
     grid-row: 2;
+}
+
+.popup {
+    display: flex;
+    position: relative;
+    grid-column: 2;
+    grid-row: 2;
+    z-index: 1;
+    background-color: beige;
+    padding:25%; 
+    justify-self: center;
+    align-self: center;
+    justify-content: center;
+    visibility: hidden;
+}
+
+.text {
+    position: relative;
+    display: block;
+    text-align: center;
+    font-weight: bold;
+    font-size: x-large;
+    top: 25%;
+}
+
+.startAgain {
+    position: absolute;
+    bottom: 20%;
+    font-weight: bold;
+    font-size: large;
+    border-radius: 10px;
+}
+
+.turn {
+    grid-column: 3;
+    grid-row: 2;
+    align-self: end;
+    margin-left: 10%;
+    margin-bottom: 44.5%;
+    width: 80px;
+    height: 80px;
+    background-color: #ccc;
+    border: solid;
+    border-width: 2px;
+    border-color: black;
+    text-align: center;
+}
+
+.circle {
+    position: relative;
+    display: inline-block;
+    height: 35px;
+    width: 35px;
+    margin-top: 10%;
+    background-color: red;
+    border-radius: 50%;
+}
+
+.timer {
+    position: relative;
+    grid-column: 2;
+    grid-row: 3;
+    margin-top: 2%;
+    margin-left: 10%;
+    max-height: 60px;
+    text-align: center;
+    font-size: 2em;
+}
+
+.clock {
+    position: relative;
+    grid-column: 2;
+    grid-row: 3;
+    max-width: 23%;
+    max-height: 23%;
+    margin-right: 10%;
+    top:5%;
+    justify-self: center;
 }
 
 td {
@@ -32,10 +111,10 @@ td {
     background-color:aqua;
 }
 
-#red {
+#Player-1 {
     background-color: red;
 }
 
-#yellow {
+#Player-2 {
     background-color: yellow;
 }
