@@ -1,9 +1,10 @@
 const grid = document.querySelector(".grid");
 let table = new Array(7);
 let piecesCnt = 0, end = false;
-
 let colLevel = new Array(8);
 colLevel.fill(0);
+let second = 0, minute = 0;
+let winnerPlayer;
 
 createTable();
 
@@ -27,15 +28,19 @@ function addPiece(y) {
         ++piecesCnt;
         ++colLevel[y];
         if (piecesCnt % 2 != 0) {
-            table[colLevel[y]][y].setAttribute("id", "red");
+            table[colLevel[y]][y].setAttribute("id", "Player-1");
+            document.querySelector(".circle").style.backgroundColor = "yellow";
         } else {
-            table[colLevel[y]][y].setAttribute("id", "yellow");
-        }
-        if (piecesCnt === 42) {
-            end = true;
+            table[colLevel[y]][y].setAttribute("id", "Player-2");
+            document.querySelector(".circle").style.backgroundColor = "red";
         }
         if (piecesCnt >= 7) {
             checkWinner(colLevel[y], y);
+        }
+        if (piecesCnt === 42) {
+            end = true;
+            clearInterval(timer);
+            setTimeout(endGame, 1000);
         }
     }   
 }
@@ -98,13 +103,16 @@ function checkWinner(x, y) {
             if (lineLength === 4) {
                 let winners = document.getElementsByClassName("winner");
                 for (let i = 0; i < winners.length; ++i) {
-                    if (winners[i].id === "red") {
+                    if (winners[i].id === "Player-1") {
                         winners[i].style.background = "#f7575f";
-                    } else {
+                    } else if (winners[i].id === "Player-2") {
                         winners[i].style.background = "#e0cb26";
                     }
                 }
+                winnerPlayer = winners[0].id.slice(-1);
                 end = true;
+                clearInterval(timer);
+                setTimeout(endGame, 1000);
             }
         } else {
             stop = true;
@@ -117,4 +125,37 @@ function checkWinner(x, y) {
             winners[0].classList.remove("winner");
         }
     }
+}
+
+let timer = setInterval(cntTime, 1000);
+
+function cntTime() {
+    ++second;
+    let prefixMin = "0", prefixSec = "0";
+    if (minute >= 10) {
+        prefixMin = "";
+    }
+    if (second >= 10) {
+        prefixSec = "";
+    }
+    if (second === 60) {
+        second = 0;
+        ++minute;
+    }
+    document.querySelector(".timer").innerText = prefixMin + minute + ":" + prefixSec + second;
+}
+
+function endGame() {
+    document.querySelector(".circle").style.backgroundColor = "transparent";
+    document.querySelector(".popup").style.visibility = "visible";
+    if (winnerPlayer) {
+        document.querySelector(".text").innerText = "Player " + winnerPlayer + " won!  \n \n Total time: " + document.querySelector(".timer").textContent;
+    } else {
+        document.querySelector(".text").innerText = "It's a draw!  \n \n Total time: " + document.querySelector(".timer").textContent; 
+    }
+    
+}
+
+function startAgain() {
+    window.location.reload();
 }
