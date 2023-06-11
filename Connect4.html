@@ -8,10 +8,18 @@
     <title>Connect 4</title>
   </head>
   <body>
-    <h1>Connect 4</h1>
     <div class = container>
+      <h1>Connect 4</h1>
       <div class = grid></div>
-      <span class = timer></span>
+      <div class = popup>
+        <span class = text></span>
+        <button type = button class = startAgain onclick = "startAgain()"> Start again </button>
+      </div>
+      <div class = turn> Player turn 
+        <span class = circle></span>
+      </div>
+      <img class = clock src = "Clock.png"> 
+      <span class = timer>00:00</span> 
     </div>
   </body>
 </html>
