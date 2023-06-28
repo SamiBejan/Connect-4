@@ -128,15 +128,15 @@ function setTo0() {
 function cntTime() {
     ++second;
     let prefixMin = "0", prefixSec = "0";
+    if (second === 60) {
+        second = 0;
+        ++minute;
+    }
     if (minute >= 10) {
         prefixMin = "";
     }
     if (second >= 10) {
         prefixSec = "";
-    }
-    if (second === 60) {
-        second = 0;
-        ++minute;
     }
     document.querySelector(".timer").innerText = prefixMin + minute + ":" + prefixSec + second;
 }
